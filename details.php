@@ -115,7 +115,7 @@ html, body {
 .background:first-child {
 
    background-image: url(<?php if ($my_array['image_1']) {               
-                	echo "images_1/".$my_array['image_1']." ";
+                echo "images_1/".$my_array['image_1']." ";
                 } else echo "details/background2.jpg";
                 ?>);
 
@@ -136,7 +136,7 @@ html, body {
 .background:nth-child(2) {
 
   background-image: url(<?php if ($my_array['image_2']) {               
-                	echo "images_2/".$my_array['image_2']." ";
+                echo "images_2/".$my_array['image_2']." ";
                 } else echo "details/background2.jpg";
                 ?>);
 
@@ -145,7 +145,7 @@ html, body {
 .background:nth-child(3) {
 
   background-image: url(<?php if ($my_array['image_3']) {               
-                	echo "images_3/".$my_array['image_3']." ";
+                echo "images_3/".$my_array['image_3']." ";
                 } else echo "details/background2.jpg";
                 ?>);
 
@@ -351,55 +351,12 @@ html, body {
             <li><?php echo htmlspecialchars($mying)?></li>
             <?php } ?>
         </ol>
-        <p>
-
-          <!-- <br>
-
-          Spinach
-
-          <br>
-
-          Lettuce
-
-          <br>
-
-          Tomatoes
-
-          <br>
-
-          Spinach
-          ///////////////////////////////////////////
-           background-image: url(<?php if ($my_array['image_1']) {               
-                	echo "images_1/".$my_array['image_1']." ";
-                }?>);
-                ////////////////////////////////////////////////////
-
-          <br>
-
-          Lettuce
-
-          <br>
-
-          Tomatoes
-
-          <br>
-
-          Spinach
-
-          <br>
-
-          Lettuce
-
-          <br>
-
-          Tomatoes -->
-
-      
-
+        <p>   
+		
     </div>
-
+	  
   </section>
-
+	
   <section class="background">
 
     <div class="content-wrapper">
@@ -426,50 +383,37 @@ html, body {
       <br>
       <div class="row">
 
-      			<?php 
-      			if ($_SESSION) {
-      			$sql_countlike = " SELECT * FROM countlike WHERE userid ='$_SESSION[id]' AND postid = '$globalid'";
- 				$select_result = mysqli_query($conn, $sql_countlike);
- 				$array = mysqli_fetch_array($select_result);
-      			if (!$array) {
-      				$sql_countlike_INSERT = "INSERT INTO countlike (userid, postid) VALUES ('$_SESSION[id]', '$globalid')";
-      				$insert_result = (mysqli_query($conn, $sql_countlike_INSERT)); ?>
-      				<!-- <div class="col s12 m12 l12 center"> --> 
-      		  			<a class="btn-floating btn waves-effect waves-light red" id="countlike" name="countlike"
-      		  			href="countlike.php?id=<?php echo $globalid?>"><i class="material-icons">favorite</i></a>
-      			    </div>
-      			<?php } else { 
-      				if ($array['checked']==1) { ?>
-      					<!-- <div class="col s12 m12 l12 center"> -->
-      		  				<a class="btn-floating btn disabled waves-effect waves-light red" id="countlike" name="countlike"
-      		  				href="myindex.php?id=<?php echo $globalid?>"><i class="material-icons">favorite</i></a>
-      					</div>
-      					<div class="row"></div>
-      					<p class="indigo-text">Thank you for liking the post!</p>
-      		    <?php } else { ?>
-      						<!-- <div class="col s12 m12 l12 center">  -->
-      		  					<a class="btn-floating btn waves-effect waves-light red" id="countlike" name="countlike"
-      		  					href="countlike.php?id=<?php echo $globalid?>"><i class="material-icons">favorite</i></a>
-      						</div>
-      		 	<?php }
-      			}
-      			}?>
-      		</div>
-
+      	<?php 
+      	if ($_SESSION) {
+      	   $sql_countlike = " SELECT * FROM countlike WHERE userid ='$_SESSION[id]' AND postid = '$globalid'";
+ 	   $select_result = mysqli_query($conn, $sql_countlike);
+ 	   $array = mysqli_fetch_array($select_result);
+      	   if (!$array) {
+      	     $sql_countlike_INSERT = "INSERT INTO countlike (userid, postid) VALUES ('$_SESSION[id]', '$globalid')";
+      	     $insert_result = (mysqli_query($conn, $sql_countlike_INSERT)); ?>
+             <a class="btn-floating btn waves-effect waves-light red" id="countlike" name="countlike"
+             href="countlike.php?id=<?php echo $globalid?>"><i class="material-icons">favorite</i></a>
+      	     </div>
+      	     <?php } else { 
+      		if ($array['checked']==1) { ?>
+      		  <a class="btn-floating btn disabled waves-effect waves-light red" id="countlike" name="countlike"
+      		  href="myindex.php?id=<?php echo $globalid?>"><i class="material-icons">favorite</i></a>
+      	     </div>
+      	     <div class="row"></div>
+      	     <p class="indigo-text">Thank you for liking the post!</p>
+             <?php } else { ?>
+      	     <a class="btn-floating btn waves-effect waves-light red" id="countlike" name="countlike"
+      	     href="countlike.php?id=<?php echo $globalid?>"><i class="material-icons">favorite</i></a>
+      	     </div>
+      	<?php }
+      	}
+      }?>
+      </div>
     </div>
-
   </section>
-
 </div>
-
 <!-- partial -->
-
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
-
+ <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
 <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script><script  src="./details/details.js"></script>
-
-
-
 </body>
-
 </html>
